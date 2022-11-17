@@ -15,7 +15,7 @@ future_value = 1000
 remaining_months = 9
 print(future_value)
 print(remaining_months)
-present_value = future_value/(1+0.2/12)**9
+present_value = future_value/(1+0.2/12)**12
 print("The fair value of your loan is $", present_value)
 loan_price = 500
 if present_value >= loan_price:
@@ -24,12 +24,15 @@ else:
         print("The cost of the loan is to expensive and not worth buying")
 annual_discount_rate = 0.20
 new_loan = {
-    "loan_price": 800,
-    "remaining_months": 12,
-    "repayment_interval":"bullet",
+        "loan_price": 800,
+        "remaining_months": 12,
+        "repayment_interval":"bullet",
     "future_value": 1000,
 }
-def present_value(future_value,remaining_months,annual_discount_rate):
-    present_value = future_value/(1+annual_discount_rate/12)**12
-    return present_value
-    print(f"The present value of the loan is: {present_value}")
+def present_value(future_value, remaining_months, annual_discount_rate):
+        present_value = future_value/((1+annual_discount_rate)**(remaining_months/12))
+        return present_value
+present_value = present_value(new_loan.get("future_value"), new_loan.get("remaining_months"), 0.2)
+print(present_value)
+Inexpensive_loan = []
+
